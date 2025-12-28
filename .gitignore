@@ -1,0 +1,6 @@
+# visual studio
+.vs/
+
+#CMake
+build/
+out/
