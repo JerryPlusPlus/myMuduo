@@ -14,6 +14,7 @@ namespace detail
 
 char require_32_bit_integer_at_least[sizeof(int) >= sizeof(int32_t) ? 1 : -1];
 
+
 // algorithm and explanation see:
 // http://www.faqs.org/faqs/calendars/faq/part2/
 // http://blog.csdn.net/Solstice

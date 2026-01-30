@@ -128,13 +128,13 @@ class StringPiece {
   bool operator!=(const StringPiece& x) const {
     return !(*this == x);
   }
-
+ 
 #define STRINGPIECE_BINARY_PREDICATE(cmp,auxcmp)                             \
   bool operator cmp (const StringPiece& x) const {                           \
     int r = memcmp(ptr_, x.ptr_, length_ < x.length_ ? length_ : x.length_); \
     return ((r auxcmp 0) || ((r == 0) && (length_ cmp x.length_)));          \
   }
-  STRINGPIECE_BINARY_PREDICATE(<,  <);
+  STRINGPIECE_BINARY_PREDICATE(<,  <);  
   STRINGPIECE_BINARY_PREDICATE(<=, <);
   STRINGPIECE_BINARY_PREDICATE(>=, >);
   STRINGPIECE_BINARY_PREDICATE(>,  >);

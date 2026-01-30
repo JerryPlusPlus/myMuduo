@@ -21,6 +21,13 @@
 
 using namespace muduo;
 using namespace muduo::net;
+/* 匿名命名空间
+它把里面声明的函数/变量/类型都变成 只在当前 .cpp 文件可见（具有 internal linkage）。
+效果类似 C 里的 static，但更适合 C++（尤其是对类型、模板、函数重载等）。
+static（文件作用域）也能做到内部链接，但：
+•	static 主要用于变量/函数；对“类型/模板/重载集合”的组织性不如匿名命名空间清晰
+•	C++ 社区更倾向在 .cpp 里用匿名命名空间封装私有实现
+*/
 
 namespace
 {

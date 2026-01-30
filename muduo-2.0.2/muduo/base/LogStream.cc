@@ -99,8 +99,8 @@ template class FixedBuffer<kLargeBuffer>;
  [1.00P, 999P]
  [1.00E, inf)
 */
-std::string formatSI(int64_t s)
-{
+std::string formatSI(int64_t s) // 使用k/M/G/T/P/E的缩写表示数字，例如：1234567890 --> 1.23G
+{  
   double n = static_cast<double>(s);
   char buf[64];
   if (s < 1000)
@@ -159,7 +159,7 @@ std::string formatIEC(int64_t s)
   const double Ei = Pi * 1024.0;
 
   if (n < Ki)
-    snprintf(buf, sizeof buf, "%" PRId64, s);
+    snprintf(buf, sizeof buf, "%" PRId64, s);   //跨平台的兼容写法：#define PRId64 "lld"
   else if (n < Ki*9.995)
     snprintf(buf, sizeof buf, "%.2fKi", n / Ki);
   else if (n < Ki*99.95)
@@ -204,6 +204,9 @@ std::string formatIEC(int64_t s)
 
 }  // namespace muduo
 
+
+// 由于前面使用了using namespace muduo; 和 using namespace muduo::detail;
+// 所以下面类中的函数定义不能再写到命名空间中了
 template<int SIZE>
 const char* FixedBuffer<SIZE>::debugString()
 {
